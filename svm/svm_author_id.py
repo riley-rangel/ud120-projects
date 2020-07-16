@@ -26,7 +26,7 @@ features_train, features_test, labels_train, labels_test = preprocess()
 
 #########################################################
 ### your code goes here ###
-clf = SVC(kernel="rbf")
+clf = SVC(kernel="rbf", C=10000.0)
 t_train0 = time()
 clf.fit(features_train[:len(features_train)/100], labels_train[:len(labels_train)/100])
 print("Training time (s): {}".format(round(time() - t_train0)))
