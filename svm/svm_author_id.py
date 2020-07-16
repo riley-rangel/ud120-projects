@@ -22,16 +22,15 @@ from sklearn.metrics import accuracy_score
 features_train, features_test, labels_train, labels_test = preprocess()
 
 
-
-
 #########################################################
 ### your code goes here ###
 clf = SVC(kernel="rbf", C=10000.0)
 t_train0 = time()
-clf.fit(features_train[:len(features_train)/100], labels_train[:len(labels_train)/100])
+clf.fit(features_train, labels_train)
 print("Training time (s): {}".format(round(time() - t_train0)))
 t_pred0 = time()
 pred = clf.predict(features_test)
+print("# of emails classified Chris (class 1): {}".format(list(pred).count(1)))
 print("Prediction time (s): {}".format(round(time() - t_pred0)))
 score = accuracy_score(pred, labels_test)
 print(score)
